@@ -1,0 +1,77 @@
+{
+    "Name": "Concert",
+    "Keyframes": [
+      {
+        "HasEmote": "True",
+        "HasAudio": "True",
+        "AudioClip": "base",
+        "HasJoints": "True",
+        "Expression": "Happy",
+        "WaitTime": 7700,
+        "JointMoveTime": 6,
+        "JointAngles": [
+          {
+            "Joint": "LeftShoulder",
+            "Angle": 35
+          },
+          {
+            "Joint": "RightShoulder",
+            "Angle": 235
+          },
+           {
+            "Joint": "LeftBicep",
+            "Angle": 65
+          },
+          {
+            "Joint": "RightBicep",
+            "Angle": 175
+          },
+           {
+            "Joint": "RightElbow",
+            "Angle": 25
+          },
+          {
+            "Joint": "LeftElbow",
+            "Angle": 175
+          }
+          
+        ]
+      },
+      {
+        "HasEmote": "True",
+        "HasAudio": "True",
+        "AudioClip": "base",
+        "HasJoints": "True",
+        "Expression": "Happy",
+        "WaitTime": 6600,
+        "JointMoveTime": 6,
+        "JointAngles": [
+          {
+            "Joint": "LeftShoulder",
+            "Angle": 175
+          },
+          {
+            "Joint": "RightShoulder",
+            "Angle": 80
+          },
+           {
+            "Joint": "LeftBicep",
+            "Angle": 115
+          },
+          {
+            "Joint": "RightBicep",
+            "Angle": 115
+          },
+           {
+            "Joint": "RightElbow",
+            "Angle": 90
+          },
+          {
+            "Joint": "LeftElbow",
+            "Angle": 105
+          }
+          
+        ]
+      }
+    ]
+  }
