@@ -1,0 +1,26 @@
+[0.578s] Invoking command in '/home/user/ROB421-Group/trivia_bot': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/user/ROB421-Group/build/trivia_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/trivia_bot build --build-base /home/user/ROB421-Group/build/trivia_bot/build install --record /home/user/ROB421-Group/build/trivia_bot/install.log --single-version-externally-managed install_data
+[0.766s] running egg_info
+[0.778s] writing ../build/trivia_bot/trivia_bot.egg-info/PKG-INFO
+[0.778s] writing dependency_links to ../build/trivia_bot/trivia_bot.egg-info/dependency_links.txt
+[0.779s] writing entry points to ../build/trivia_bot/trivia_bot.egg-info/entry_points.txt
+[0.779s] writing requirements to ../build/trivia_bot/trivia_bot.egg-info/requires.txt
+[0.779s] writing top-level names to ../build/trivia_bot/trivia_bot.egg-info/top_level.txt
+[0.804s] reading manifest file '../build/trivia_bot/trivia_bot.egg-info/SOURCES.txt'
+[0.806s] writing manifest file '../build/trivia_bot/trivia_bot.egg-info/SOURCES.txt'
+[0.806s] running build
+[0.806s] running build_py
+[0.806s] copying trivia_bot/speaker.py -> /home/user/ROB421-Group/build/trivia_bot/build/lib/trivia_bot
+[0.806s] running install
+[0.810s] running install_lib
+[0.824s] copying /home/user/ROB421-Group/build/trivia_bot/build/lib/trivia_bot/speaker.py -> /home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot
+[0.824s] byte-compiling /home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot/speaker.py to speaker.cpython-312.pyc
+[0.824s] running install_data
+[0.824s] running install_egg_info
+[0.840s] removing '/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot-0.0.0-py3.12.egg-info' (and everything under it)
+[0.840s] Copying ../build/trivia_bot/trivia_bot.egg-info to /home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot-0.0.0-py3.12.egg-info
+[0.840s] running install_scripts
+[0.936s] Installing gameloop script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+[0.936s] Installing mic script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+[0.936s] Installing speaker script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+[0.937s] writing list of installed files to '/home/user/ROB421-Group/build/trivia_bot/install.log'
+[0.955s] Invoked command in '/home/user/ROB421-Group/trivia_bot' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/user/ROB421-Group/build/trivia_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/trivia_bot build --build-base /home/user/ROB421-Group/build/trivia_bot/build install --record /home/user/ROB421-Group/build/trivia_bot/install.log --single-version-externally-managed install_data

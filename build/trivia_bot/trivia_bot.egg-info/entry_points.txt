@@ -1,0 +1,4 @@
+[console_scripts]
+gameloop = trivia_bot.gameloop:main
+mic = trivia_bot.mic:main
+speaker = trivia_bot.speaker:main

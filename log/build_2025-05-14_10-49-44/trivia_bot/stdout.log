@@ -1,0 +1,21 @@
+running egg_info
+writing ../build/trivia_bot/trivia_bot.egg-info/PKG-INFO
+writing dependency_links to ../build/trivia_bot/trivia_bot.egg-info/dependency_links.txt
+writing entry points to ../build/trivia_bot/trivia_bot.egg-info/entry_points.txt
+writing requirements to ../build/trivia_bot/trivia_bot.egg-info/requires.txt
+writing top-level names to ../build/trivia_bot/trivia_bot.egg-info/top_level.txt
+reading manifest file '../build/trivia_bot/trivia_bot.egg-info/SOURCES.txt'
+writing manifest file '../build/trivia_bot/trivia_bot.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../build/trivia_bot/trivia_bot.egg-info to /home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages/trivia_bot-0.0.0-py3.12.egg-info
+running install_scripts
+Installing gameloop script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+Installing mic script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+Installing speaker script to /home/user/ROB421-Group/install/trivia_bot/lib/trivia_bot
+writing list of installed files to '/home/user/ROB421-Group/build/trivia_bot/install.log'
