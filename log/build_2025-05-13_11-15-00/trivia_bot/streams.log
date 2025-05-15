@@ -1,9 +1,0 @@
-[0.586s] Invoking command in '/home/user/ROB421-Group/trivia_bot': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/user/ROB421-Group/build/trivia_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/trivia_bot build --build-base /home/user/ROB421-Group/build/trivia_bot/build install --record /home/user/ROB421-Group/build/trivia_bot/install.log --single-version-externally-managed install_data
-[0.775s] running egg_info
-[0.787s] writing ../build/trivia_bot/trivia_bot.egg-info/PKG-INFO
-[0.788s] writing dependency_links to ../build/trivia_bot/trivia_bot.egg-info/dependency_links.txt
-[0.788s] writing entry points to ../build/trivia_bot/trivia_bot.egg-info/entry_points.txt
-[0.788s] writing requirements to ../build/trivia_bot/trivia_bot.egg-info/requires.txt
-[0.788s] writing top-level names to ../build/trivia_bot/trivia_bot.egg-info/top_level.txt
-[0.802s] error: package directory 't' does not exist
-[0.815s] Invoked command in '/home/user/ROB421-Group/trivia_bot' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/user/ROB421-Group/build/trivia_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ROB421-Group/install/trivia_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/trivia_bot build --build-base /home/user/ROB421-Group/build/trivia_bot/build install --record /home/user/ROB421-Group/build/trivia_bot/install.log --single-version-externally-managed install_data
