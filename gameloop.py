@@ -1,14 +1,9 @@
 from espeak_python_easy_interface import text_to_speech
 from trivia_stt import recognize_speech_from_mic
 import speech_recognition as sr
+from question import Question
 # import pyttsx3
 
-class Question:
-    def __init__(self, id, category, question, answer):
-        self.id = id
-        self.category = category
-        self.question = question
-        self.answer = answer
 
 class Game:
     def __init__(self, num_questions):
@@ -19,8 +14,6 @@ class Game:
 
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
-        # engine = pyttsx3.init()
-
 
     def load_questions(self):
         return [
@@ -37,23 +30,26 @@ class Game:
 
     def get_guess(self):
         guess =  recognize_speech_from_mic(self.recognizer, self.microphone)
-        print(guess)
+        print(guess['transcription'])
         return guess
 
     def check_answer(self, question, guess):
-        correct = question.answer.strip().lower() == guess['transcription']
-        correct = "The Answer is Correct" if correct else "The Answer is Incorrect"
-        # text_to_speech(question.question)
-        return correct
+        if guess['transcription']:
+            correct = question.answer == guess['transcription'].strip().lower()
+            status = "The Answer is Correct" if correct else "The Answer is Incorrect"
+            # text_to_speech(question.question)
+            return correct
 
     def gameloop(self):
         while self.current_question_index < self.num_questions:
-            self.current_question = self.questions[self.current_question_index]
-            self.ask_question(self.current_question)
-            guess = self.get_guess()
-            correct = self.check_answer(self.current_question, guess)
-            if correct:
-                self.current_question_index += 1
+            while True:
+                self.current_question = self.questions[self.current_question_index]
+                self.ask_question(self.current_question)
+                guess = self.get_guess()
+                correct = self.check_answer(self.current_question, guess)
+                if correct:
+                    self.current_question_index += 1
+                    break
 
         print("Game Over.")
 
