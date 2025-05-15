@@ -4,6 +4,8 @@ from question import Question
 import pyttsx3
 import time
 
+from move import Control
+
 engine = pyttsx3.init()
 
 class Game:
@@ -16,6 +18,9 @@ class Game:
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
         self.engine = pyttsx3.init()
+
+        self.control = Control()
+
 
     def text_to_speech(self, text):
             engine.say(text)
@@ -48,6 +53,7 @@ class Game:
             return correct
 
     def gameloop(self):
+        self.control.perform_behavior('./motions/leftpointer.json')
         while self.current_question_index < self.num_questions:
             while True:
                 self.current_question = self.questions[self.current_question_index]
