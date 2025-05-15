@@ -1,9 +1,10 @@
-from espeak_python_easy_interface import text_to_speech
 from trivia_stt import recognize_speech_from_mic
 import speech_recognition as sr
 from question import Question
-# import pyttsx3
+import pyttsx3
+import time
 
+engine = pyttsx3.init()
 
 class Game:
     def __init__(self, num_questions):
@@ -14,6 +15,11 @@ class Game:
 
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
+        self.engine = pyttsx3.init()
+
+    def text_to_speech(self, text):
+            engine.say(text)
+            engine.runAndWait()
 
     def load_questions(self):
         return [
@@ -25,7 +31,7 @@ class Game:
         ]
 
     def ask_question(self, question):
-        # text_to_speech(question.question)
+        self.text_to_speech(question.question)
         print(f"Question: {question.question}")
 
     def get_guess(self):
@@ -37,7 +43,8 @@ class Game:
         if guess['transcription']:
             correct = question.answer == guess['transcription'].strip().lower()
             status = "The Answer is Correct" if correct else "The Answer is Incorrect"
-            # text_to_speech(question.question)
+            print(status)
+            self.text_to_speech(status)
             return correct
 
     def gameloop(self):
