@@ -1,0 +1,83 @@
+{
+    "Name": "incorrect",
+    "Keyframes": [
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles":[
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 161
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles": [
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 79
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles":[
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 161
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles": [
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 79
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles":[
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 161
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "Expression": "Sad",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 1,
+            "JointAngles":[
+                {
+                    "Joint": "HeadTurn",
+                    "Angle": 120
+                }
+            ]
+        }
+    ]
+}
