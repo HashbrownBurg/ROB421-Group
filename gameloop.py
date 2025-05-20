@@ -2,17 +2,15 @@ from trivia_stt import recognize_speech_from_mic
 import speech_recognition as sr
 from question import Question
 import pyttsx3
+from trivia_question_finder import pick_Question
 import time
 
 from move import Control
-
-engine = pyttsx3.init()
 
 class Game:
     def __init__(self, num_questions):
         self.num_questions = num_questions
         self.current_question_index = 0
-        self.questions = self.load_questions()
         self.current_question = None
 
         self.recognizer = sr.Recognizer()
@@ -23,48 +21,47 @@ class Game:
 
 
     def text_to_speech(self, text):
-            engine.say(text)
-            engine.runAndWait()
+        self.engine.say(text)
+        self.engine.runAndWait()
 
-    def load_questions(self):
-        return [
-            Question(1, 'trivia', 'What is my favorite color?', 'blue'),
-            Question(2, 'trivia', 'What planet is known as the Red Planet?', 'mars'),
-            Question(3, 'trivia', 'What is the capital of France?', 'paris'),
-            Question(4, 'trivia', 'What do bees make?', 'honey'),
-            Question(5, 'trivia', 'What gas do plants breathe in?', 'carbon dioxide')
-        ]
+    def load_question(self):
+        return pick_Question('Trivia_Questions.csv')
 
-    def ask_question(self, question):
-        self.text_to_speech(question.question)
-        print(f"Question: {question.question}")
+    def ask_question(self):
+        self.text_to_speech(self.current_question.question)
+        print(f"Question: {self.current_question.question}")
 
     def get_guess(self):
-        guess =  recognize_speech_from_mic(self.recognizer, self.microphone)
-        print(guess['transcription'])
+        guess = recognize_speech_from_mic(self.recognizer, self.microphone)
+        print(f"User said: {guess.get('transcription', '')}")
         return guess
 
-    def check_answer(self, question, guess):
-        if guess['transcription']:
-            correct = question.answer == guess['transcription'].strip().lower()
-            status = "The Answer is Correct" if correct else "The Answer is Incorrect"
-            print(status)
-            self.text_to_speech(status)
-            return correct
+    def check_answer(self, guess):
+        transcription = guess.get('transcription')
+        if transcription:
+            is_correct = self.current_question.correct_answer.lower() == transcription.strip().lower()
+            response = "The answer is correct!" if is_correct else "The answer is incorrect."
+            print(response)
+            self.text_to_speech(response)
+            return is_correct
+        else:
+            self.text_to_speech("I didn't catch that. Please try again.")
+            return False
 
     def gameloop(self):
-        self.control.perform_behavior('./motions/leftpointer.json')
+        self.control.perform_behavior('Wave.json')
         while self.current_question_index < self.num_questions:
+            self.current_question = self.load_question()
+            self.ask_question()
+
             while True:
-                self.current_question = self.questions[self.current_question_index]
-                self.ask_question(self.current_question)
                 guess = self.get_guess()
-                correct = self.check_answer(self.current_question, guess)
-                if correct:
+                if self.check_answer(guess):
                     self.current_question_index += 1
                     break
 
         print("Game Over.")
+        self.text_to_speech("Game Over. Thank you for playing!")
 
 def main():
     game = Game(num_questions=5)

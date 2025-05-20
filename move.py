@@ -19,6 +19,13 @@ class Control(JamieControl):
         self.behavior_folder = behavior_folder if os.path.exists(behavior_folder) else 'behaviors'
         self.initialize_serial_connection()
 
+    def load_behavior(self, behavior_file):
+        with open(behavior_file, 'r') as file:
+            return json.load(file)['Keyframes']
+        
+    def delay(self, t):
+        time.sleep(t)
+
     def perform_behavior(self, file):
         selected_behavior = file
         behavior_path = os.path.join(self.behavior_folder, selected_behavior)
