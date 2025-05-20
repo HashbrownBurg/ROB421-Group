@@ -1,0 +1,40 @@
+{
+    "Name": "Concert",
+    "Keyframes": [
+      {
+        "HasEmote": "True",
+        "HasAudio": "True",
+        "AudioClip": "base",
+        "HasJoints": "True",
+        "Expression": "Happy",
+        "WaitTime": 3100,
+        "JointMoveTime": 3,
+        "JointAngles": [
+          {
+            "Joint": "LeftChest",
+            "Angle": 30
+          },
+          {
+            "Joint": "LeftElbow",
+            "Angle": 180
+          }
+          
+        ]
+      },
+      {
+        "HasEmote": "True",
+        "HasAudio": "False",
+        "HasJoints": "True",
+        "Expression": "Happy",
+        "WaitTime": 3100,
+        "JointMoveTime": 3,
+        "JointAngles": [
+          {
+            "Joint": "LeftShoulder",
+            "Angle": 140
+          }
+          
+        ]
+      }
+    ]
+  }
