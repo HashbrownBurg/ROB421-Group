@@ -40,8 +40,13 @@ class Game:
         transcription = guess.get('transcription')
         if transcription:
             is_correct = self.current_question.correct_answer.lower() == transcription.strip().lower()
-            response = "The answer is correct!" if is_correct else "The answer is incorrect."
-            print(response)
+            if is_correct:
+                self.control.perform_behavior("CorrectAnswer.json")
+                response = "The answer is correct!"
+            else:
+                self.control.perform_behavior("incorrect.json")
+                response = "The answer is incorrect."
+
             self.text_to_speech(response)
             return is_correct
         else:
