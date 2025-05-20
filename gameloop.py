@@ -19,7 +19,6 @@ class Game:
 
         self.control = Control()
 
-
     def text_to_speech(self, text):
         self.engine.say(text)
         self.engine.runAndWait()

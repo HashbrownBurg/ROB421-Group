@@ -26,6 +26,11 @@ class Control(JamieControl):
     def delay(self, t):
         time.sleep(t)
 
+    def move_to_home(self):
+        joint_ids = [joint['JointID'] for joint in self.full_joint_config]
+        home_angles = [joint['HomeAngle'] for joint in self.full_joint_config]
+        self.send_joint_command(joint_ids, home_angles, 1)
+
     def perform_behavior(self, file):
         selected_behavior = file
         behavior_path = os.path.join(self.behavior_folder, selected_behavior)
@@ -47,3 +52,4 @@ class Control(JamieControl):
                 move_time = frame["JointMoveTime"]
                 self.send_joint_command(joint_ids, angles, move_time)
             self.delay(frame["WaitTime"] / 1000)
+        self.move_to_home()
