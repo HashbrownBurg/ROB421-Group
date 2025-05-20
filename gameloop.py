@@ -3,8 +3,8 @@ import speech_recognition as sr
 from question import Question
 import pyttsx3
 import time
-
-from move import Control
+from JamieUI import JamieControlUI
+from PyQt5.QtWidgets import QApplication
 
 engine = pyttsx3.init()
 
@@ -19,7 +19,8 @@ class Game:
         self.microphone = sr.Microphone()
         self.engine = pyttsx3.init()
 
-        self.control = Control()
+        app = QApplication([])
+        self.jamie = JamieControlUI()
 
 
     def text_to_speech(self, text):
@@ -53,7 +54,7 @@ class Game:
             return correct
 
     def gameloop(self):
-        self.control.perform_behavior('./motions/leftpointer.json')
+        self.jamie.perform_behavior('Wave.json')
         while self.current_question_index < self.num_questions:
             while True:
                 self.current_question = self.questions[self.current_question_index]

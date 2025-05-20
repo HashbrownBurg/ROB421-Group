@@ -2,7 +2,7 @@
 import inquirer
 import pandas
 import random
-from question import Question
+from myFolder.question import Question
 
 def pick_Question(filePath):
     questions = pandas.read_csv(filePath)
