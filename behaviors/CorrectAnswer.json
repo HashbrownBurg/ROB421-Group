@@ -1,14 +1,14 @@
 {
-    "Name": "Concert",
+    "Name": "CorrectAnswer",
     "Keyframes": [
       {
         "HasEmote": "True",
-        "HasAudio": "True",
+        "HasAudio": "False",
         "AudioClip": "base",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 7700,
-        "JointMoveTime": 6,
+        "WaitTime": 3300,
+        "JointMoveTime": 3,
         "JointAngles": [
           {
             "Joint": "LeftShoulder",
@@ -39,12 +39,12 @@
       },
       {
         "HasEmote": "True",
-        "HasAudio": "True",
+        "HasAudio": "False",
         "AudioClip": "base",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 6600,
-        "JointMoveTime": 6,
+        "WaitTime": 3300,
+        "JointMoveTime": 3,
         "JointAngles": [
           {
             "Joint": "LeftShoulder",
