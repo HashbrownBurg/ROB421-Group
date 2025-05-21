@@ -1,14 +1,15 @@
 {
-    "Name": "CorrectAnswer",
+    "Name": "Concert",
     "Keyframes": [
+
       {
         "HasEmote": "True",
-        "HasAudio": "False",
-        "AudioClip": "base",
+        "HasAudio": "True",
+        "AudioClip": "Yippeee",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 3300,
-        "JointMoveTime": 3,
+        "WaitTime": 2100,
+        "JointMoveTime": 2,
         "JointAngles": [
           {
             "Joint": "LeftShoulder",
@@ -44,7 +45,7 @@
         "HasJoints": "True",
         "Expression": "Happy",
         "WaitTime": 3300,
-        "JointMoveTime": 3,
+        "JointMoveTime": 2,
         "JointAngles": [
           {
             "Joint": "LeftShoulder",
