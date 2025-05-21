@@ -1,9 +1,9 @@
 {
-    "Name": "Concert",
+    "Name": "RightPointer",
     "Keyframes": [
       {
         "HasEmote": "True",
-        "HasAudio": "True",
+        "HasAudio": "False",
         "AudioClip": "base",
         "HasJoints": "True",
         "Expression": "Happy",
