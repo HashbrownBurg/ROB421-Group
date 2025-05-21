@@ -52,4 +52,4 @@ class Control(JamieControl):
                 move_time = frame["JointMoveTime"]
                 self.send_joint_command(joint_ids, angles, move_time)
             self.delay(frame["WaitTime"] / 1000)
-        self.move_to_home()
+        # self.move_to_home()

@@ -53,7 +53,7 @@ class Game:
             return False
 
     def gameloop(self):
-        self.control.perform_behavior('Wave.json')
+        # self.control.perform_behavior('Wave.json')
         while self.current_question_index < self.num_questions:
             self.current_question = self.load_question()
             self.ask_question()
