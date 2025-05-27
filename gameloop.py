@@ -4,6 +4,7 @@ from question import Question
 import pyttsx3
 from trivia_question_finder import pick_Question
 import time
+import threading
 
 from move import Control
 
@@ -21,8 +22,12 @@ class Game:
 
 
     def text_to_speech(self, text):
-        self.engine.say(text)
-        self.engine.runAndWait()
+
+        def speak(engine, text):
+            engine.say(text)
+            engine.runAndWait()
+        
+        threading.Thread(target=speak, args=(self.engine, text)).start()
 
     def load_question(self):
         return pick_Question('Trivia_Questions.csv')
