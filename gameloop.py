@@ -2,6 +2,9 @@ from trivia_stt import recognize_speech_from_mic
 import speech_recognition as sr
 import pyttsx3
 from trivia_question_finder import pick_Question
+import time
+import threading
+import random
 from move import Control
 from llm import llm
 import pandas as pd
@@ -27,8 +30,12 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         ]
 
     def text_to_speech(self, text):
-        self.engine.say(text)
-        self.engine.runAndWait()
+
+        def speak(engine, text):
+            engine.say(text)
+            engine.runAndWait()
+        
+        threading.Thread(target=speak, args=(self.engine, text)).start()
 
     def send_to_llm(self, user_input):
         self.chat_history.append({"role": "user", "content": user_input})
