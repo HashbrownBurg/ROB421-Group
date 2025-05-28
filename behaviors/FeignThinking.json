@@ -1,0 +1,75 @@
+{
+    "Name": "FeignThinking",
+    "Keyframes": [
+        {
+            "HasEmote": "True",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "Expression": "Confused",
+            "WaitTime": 1500,
+            "JointMoveTime": 3,
+            "JointAngles": [
+                {
+                    "Joint": "HeadTilt",
+                    "Angle": 117
+                },
+                {
+                    "Joint": "HeadNod",
+                    "Angle": 112
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "Expression": "Confused",
+            "WaitTime": 1500,
+            "JointMoveTime": 3,
+            "JointAngles": [
+                {
+                    "Joint": "LeftChest",
+                    "Angle": 75
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "Expression": "Confused",
+            "WaitTime": 1500,
+            "JointMoveTime": 3,
+            "JointAngles": [
+                {
+                    "Joint": "LeftElbow",
+                    "Angle": 70
+                },
+                {
+                    "Joint": "LeftBicep",
+                    "Angle": 175
+                },
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 170
+                }
+            ]
+        },
+        {
+            "HasEmote": "True",
+            "HasAudio": "False",
+            "AudioClip": "hmm",
+            "HasJoints": "True",
+            "Expression": "Confused",
+            "WaitTime": 1500,
+            "JointMoveTime": 3,
+            "JointAngles": [
+                {
+                    "Joint": "RightChest",
+                    "Angle": 135
+                }
+            ]
+        }
+        
+    ]
+}
