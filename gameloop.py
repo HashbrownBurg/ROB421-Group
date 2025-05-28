@@ -46,6 +46,21 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         df.to_csv("chat.csv")
         return response
 
+    def trigger_behavior_with_probability(self, behavior_weights):
+        """
+        Randomly chooses a behavior to perform based on weighted probabilities.
+
+        Parameters:
+            behavior_weights (dict): e.g., {"CorrectAnswer.json": 0.5, "Concert.json": 0.3, "None": 0.2}
+        """
+        behaviors = list(behavior_weights.keys())
+        weights = list(behavior_weights.values())
+
+        selected = random.choices(behaviors, weights=weights, k=1)[0]
+        if selected != "None":
+            threading.Thread(target=self.control.perform_behavior, args=(selected,)).start()
+
+    
     def q_a(self):
         question = self.send_to_llm("Ask a trivia question.")
         print(question)
@@ -57,11 +72,19 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                 guessed = "User Guessed: " + transcription
                 response = self.send_to_llm(guessed)
                 self.text_to_speech(response)
-                if 'incorrect' in response:
-                    # self.control.perform_behavior("CorrectAnswer.json")
+                if 'incorrect' in response.lower():
+                    self.trigger_behavior_with_probability({
+                        "incorrect.json": 0.5,
+                        "FeignThinking.json": 0.3,
+                        "None": 0.2
+                    })
                     break
-                else:
-                    # self.control.perform_behavior("incorrect.json")
+                elif 'correct' in response.lower():
+                    self.trigger_behavior_with_probability({
+                        "CorrectAnswer.json": 0.5,
+                        "Concert.json": 0.3,
+                        "None": 0.2
+                    })
                     break
             else:
                  self.text_to_speech("I didn't catch that. Please try again.")

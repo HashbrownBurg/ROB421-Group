@@ -4,7 +4,7 @@
 
       {
         "HasEmote": "True",
-        "HasAudio": "True",
+        "HasAudio": "False",
         "AudioClip": "Yippeee",
         "HasJoints": "True",
         "Expression": "Happy",
