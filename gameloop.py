@@ -5,6 +5,7 @@ import pyttsx3
 from trivia_question_finder import pick_Question
 import time
 import threading
+import random
 
 from move import Control
 
@@ -45,11 +46,32 @@ class Game:
         transcription = guess.get('transcription')
         if transcription:
             is_correct = self.current_question.correct_answer.lower() == transcription.strip().lower()
+        
             if is_correct:
-                self.control.perform_behavior("CorrectAnswer.json")
+                behavior = random.choices(
+                    population = ["CorrectAnswer", "Concert", "None"],
+                    weights=[0.5, 0.3, 0.2],
+                    k=1
+                )[0]
+
+                if behavior == "CorrectAnswer":
+                    threading.Thread(target=self.control.perform_behavior, args=("CorrectAnswer.json",)).start()
+                elif behavior == "Concert":
+                    threading.Thread(target=self.control.perform_behavior, args=("Concert.json",)).start()
+
                 response = "The answer is correct!"
             else:
-                self.control.perform_behavior("incorrect.json")
+                behavior = random.choices(
+                    population = ["incorrect", "FeignThinking", "None"],
+                    weights=[0.5, 0.3, 0.2],
+                    k=1
+                )[0]
+
+                if behavior == "incorrect":
+                    threading.Thread(target=self.control.perform_behavior, args=("incorrect.json",)).start()
+                elif behavior == "FeignThinking":
+                    threading.Thread(target=self.control.perform_behavior, args=("FeignThinking.json",)).start()
+
                 response = "The answer is incorrect."
 
             self.text_to_speech(response)
