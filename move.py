@@ -5,7 +5,7 @@ from read_json import JamieControl
 
 class Control(JamieControl):
     def __init__(self, 
-                 arduino_port='COM8', 
+                 arduino_port='COM7', 
                  baud_rate=115200,
                  joint_config_file='Joint_config.json',
                  behavior_folder='behaviors',
