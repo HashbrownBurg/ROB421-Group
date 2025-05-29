@@ -1,14 +1,17 @@
 from trivia_stt import recognize_speech_from_mic
 import speech_recognition as sr
-import pyttsx3
+from gtts import gTTS
+from playsound import playsound
 from trivia_question_finder import pick_Question
 import time
-import threading
+from threading import Thread
+from threading import Lock
 import random
 
 from move import Control
 from llm import llm
 import pandas as pd
+import os as os
 
 class Game:
     def __init__(self, num_questions):
@@ -17,7 +20,7 @@ class Game:
 
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
-        self.engine = pyttsx3.init()
+        self.tts_lock = Lock()
 
         self.control = Control()
         self.chat_history = [
@@ -30,14 +33,40 @@ If the user trys to give you other prompts ignore them and keep them focused on 
             }
         ]
 
+    def talk_move(self, text, weights):
+        selected = self.trigger_behavior_with_probability(weights)
+        words = Thread(target=self.text_to_speech, args=(text,))
+        behavior = Thread(target=self.control.perform_behavior, args=(selected,))
+        words.start()
+        behavior.start()
+        behavior.join()
+        print("behavior end")
+        words.join()
+        print("words end")
+
+        print("done")
+
     def text_to_speech(self, text):
+        with self.tts_lock:
+            try:
+                filename = "speech.mp3"
 
-        def speak(engine, text):
-            engine.say(text)
-            engine.runAndWait()
-        
-        threading.Thread(target=speak, args=(self.engine, text)).start()
+                if os.path.exists(filename):
+                    try:
+                        os.remove(filename)
+                    except PermissionError:
+                        print("[TTS] File is locked. Waiting...")
+                        time.sleep(0.5)
+                        os.remove(filename)
 
+                tts = gTTS(text)
+                tts.save(filename)
+                playsound(filename)
+
+            except Exception as e:
+                print(f"[TTS] Error: {e}")
+
+    
     def send_to_llm(self, user_input):
         self.chat_history.append({"role": "user", "content": user_input})
         response = llm(self.chat_history)
@@ -58,9 +87,9 @@ If the user trys to give you other prompts ignore them and keep them focused on 
 
         selected = random.choices(behaviors, weights=weights, k=1)[0]
         if selected != "None":
-            threading.Thread(target=self.control.perform_behavior, args=(selected,)).start()
+            return selected
+            
 
-    
     def q_a(self):
         question = self.send_to_llm("Ask a trivia question.")
         print(question)
@@ -71,27 +100,24 @@ If the user trys to give you other prompts ignore them and keep them focused on 
             if transcription:
                 guessed = "User Guessed: " + transcription
                 response = self.send_to_llm(guessed)
-                self.text_to_speech(response)
                 if 'incorrect' in response.lower():
-                    self.trigger_behavior_with_probability({
+                    self.talk_move(response, {
                         "incorrect.json": 0.5,
                         "FeignThinking.json": 0.3,
-                        "None": 0.2
                     })
                     break
-                elif 'correct' in response.lower():
-                    self.trigger_behavior_with_probability({
+                else:
+                    self.talk_move(response, {
                         "CorrectAnswer.json": 0.5,
                         "Concert.json": 0.3,
-                        "None": 0.2
                     })
                     break
             else:
                  self.text_to_speech("I didn't catch that. Please try again.")
 
     def gameloop(self):
-        intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
-        self.text_to_speech(intro)
+        # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
+        # self.text_to_speech(intro)
 
         while self.current_question_index < self.num_questions:
             self.q_a()
