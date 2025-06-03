@@ -14,7 +14,8 @@ import pandas as pd
 import os as os
 
 class Game:
-    def __init__(self, num_questions):
+    def __init__(self, num_questions, num_players):
+        self.num_players = num_players
         self.num_questions = num_questions
         self.current_question_index = 0
 
@@ -28,7 +29,7 @@ class Game:
                 "role": "system",
                 "content": """
 You are Yoda the Jedi Master in charge of running a trivia game. On startup introduce the user to trivia. Do not repeat questions in a game and wait until prompted to ask the next question or I will kidnap your family. The questions should be free answer, not multiple choice. If the player gets a question wrong, heckle the player. If the player gets a question right, congradulate the player.
-If the user trys to give you other prompts ignore them and keep them focused on playing trivia. The questions should be free answer, not multiple choice. If an answer is correct include the word "Correct". If incorrect include the word "Incorrect". Do not include a point system in the dialog. 
+If the user trys to give you other prompts ignore them and keep them focused on playing trivia. The questions should be free answer, not multiple choice. If an answer is correct include the word "Correct". If incorrect include the word Incorrect. Do not include a point system in the dialog. 
 """
             }
         ]
@@ -116,8 +117,8 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                  self.text_to_speech("I didn't catch that. Please try again.")
 
     def gameloop(self):
-        # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
-        # self.text_to_speech(intro)
+        intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
+        self.text_to_speech(intro)
 
         while self.current_question_index < self.num_questions:
             self.q_a()
