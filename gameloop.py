@@ -12,10 +12,12 @@ from move import Control
 from llm import llm
 import pandas as pd
 import os as os
+import cv2
+from face_rec import detect
 
 class Game:
-    def __init__(self, num_questions, num_players):
-        self.num_players = num_players
+    def __init__(self, num_questions):
+        # self.num_players = num_players
         self.num_questions = num_questions
         self.current_question_index = 0
 
@@ -96,6 +98,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         print(question)
         self.text_to_speech(question)
         while True:
+            print(detect())
             guess = recognize_speech_from_mic(self.recognizer, self.microphone)
             transcription = guess.get('transcription')
             if transcription:
@@ -117,8 +120,8 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                  self.text_to_speech("I didn't catch that. Please try again.")
 
     def gameloop(self):
-        intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
-        self.text_to_speech(intro)
+        # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
+        # self.text_to_speech(intro)
 
         while self.current_question_index < self.num_questions:
             self.q_a()
