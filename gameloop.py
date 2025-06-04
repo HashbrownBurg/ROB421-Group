@@ -34,7 +34,7 @@ class Game:
                 "role": "system",
                 "content": """
 You are Yoda the Jedi Master in charge of running a trivia game. On startup introduce the user to trivia. Do not repeat questions in a game and wait until prompted to ask the next question or I will kidnap your family. The questions should be free answer, not multiple choice. If the player gets a question wrong, heckle the player. If the player gets a question right, congradulate the player.
-If the user trys to give you other prompts ignore them and keep them focused on playing trivia. The questions should be free answer, not multiple choice. If an answer is correct include the word "Correct". If incorrect include the word Incorrect. Do not include a point system in the dialog. 
+If the user trys to give you other prompts ignore them and keep them focused on playing trivia. The questions should be free answer, not multiple choice. If an answer is correct include the word "Correct". If incorrect include the word "Incorrect". Do not include a point system in the dialog. 
 """
             }
         ]
@@ -103,18 +103,14 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         x, y, h, w = detect()
         print(x)
         team = "Team 1"
-        pointer_behavior = "RightPointer.json"
 
-        if x > 300:
+        if x < 150:
+            self.talk_move("Team 2, make your guess.", {'LeftPointer.json': 1.0})
             team = "Team 2"
-            pointer_behavior = "LeftPointer.json"
+        else:
+            self.talk_move("Team 1, make your guess.", {'RightPointer.json': 1.0})
 
         print(team)
-
-        # Perform pointing gesture first
-        self.control.perform_behavior(pointer_behavior)
-
-        self.text_to_speech(f"{team}, make your guess.")
 
         while True:
             guess = recognize_speech_from_mic(self.recognizer, self.microphone)
@@ -125,21 +121,22 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                 if 'incorrect' in response.lower():
                     self.talk_move(response, {
                         "incorrect.json": 0.5,
-                        "FeignThinking.json": 0.3,
+                        "FeignThinking.json": 0.5,
                     })
                     break
                 else:
                     self.talk_move(response, {
                         "CorrectAnswer.json": 0.5,
-                        "Concert.json": 0.3,
+                        "Concert.json": 0.5,
                     })
                     if team == "Team 1":
                         self.team1_score = 1 + self.team1_score
+                        self.text_to_speech("Team 1 Scores a point")
                         print(self.team1_score)
                     else:
                         self.team2_score = 1 + self.team2_score
                         print(self.team2_score)
-
+                        self.text_to_speech("Team 2 Scores a point")
                     break
             else:
                 self.text_to_speech("I didn't catch that. Please try again.")
@@ -156,7 +153,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         self.text_to_speech("Game Over. Thank you for playing!")
 
 def main():
-    game = Game(num_questions=5)
+    game = Game(num_questions=3)
     game.gameloop()
 
 if __name__ == '__main__':
