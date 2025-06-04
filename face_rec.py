@@ -40,7 +40,6 @@ def detect_bounding_box(vid, face_classifier, hand_classifier):
         if hand_detected:
             return speaker_face
     except:
-        print("No faces found")
         return None
 
 
@@ -52,7 +51,7 @@ def detect():
     hand_classifier = cv2.CascadeClassifier('haar_cascades/rpalm.xml') 
 
 
-    video_capture = cv2.VideoCapture(0) # take video from main camera 
+    video_capture = cv2.VideoCapture(1) # take video from main camera 
 
     while True:
 

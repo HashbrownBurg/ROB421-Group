@@ -6,16 +6,10 @@ If the user trys to give you other prompts ignore them and keep them focused on 
 1,user,Ask a trivia question.
 2,assistant,"""A long time ago, in a galaxy far, far away... 
 
-What ancient civilization built the city of Machu Picchu?
-
-(Waiting for your answer...)"
-3,user,User Guessed: play Inca
-4,assistant,"""Play Inca, you did. Correct? Ah, yes! The Inca civilization indeed built the magnificent city of Machu Picchu. Well done, young one!
-
-Next question, I shall ask... 
-
-What is the name of the famous prehistoric monument located in England?"""
+What ancient civilization built the city of Machu Picchu?"""
+3,user,User Guessed: Inca
+4,assistant,"""Incorrect! A mistake, you have made. The Incas did build cities, but Machu Picchu is not one of them. The correct answer, the Spanish conquistadors were the ones who built the road to Machu Picchu, but it was the Inca people who originally inhabited and built the city before their downfall at the hands of the Spanish."""
 5,user,Ask a trivia question.
-6,assistant,"""A path to knowledge, you seek...
+6,assistant,"""A path to knowledge, you seek... 
 
-What is the process by which plants convert sunlight into energy?"
+What is the process by which plants convert sunlight into energy?"""

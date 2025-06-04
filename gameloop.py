@@ -25,7 +25,7 @@ class Game:
         self.team2_score = 0
 
         self.recognizer = sr.Recognizer()
-        self.microphone = sr.Microphone()
+        self.microphone = sr.Microphone(device_index=1)
         self.tts_lock = Lock()
 
         self.control = Control()
@@ -65,7 +65,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                         time.sleep(0.5)
                         os.remove(filename)
 
-                tts = gTTS(text)
+                tts = gTTS(text, lang='en', tld='com.au')
                 tts.save(filename)
                 playsound(filename)
 
