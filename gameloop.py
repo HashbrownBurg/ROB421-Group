@@ -99,15 +99,23 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         question = self.send_to_llm("Ask a trivia question.")
         print(question)
         self.text_to_speech(question)
+
         x, y, h, w = detect()
         print(x)
         team = "Team 1"
+        pointer_behavior = "RightPointer.json"
+
         if x > 300:
             team = "Team 2"
+            pointer_behavior = "LeftPointer.json"
 
         print(team)
-        self.text_to_speech(team + "Make your guess")
-       
+
+        # Perform pointing gesture first
+        self.control.perform_behavior(pointer_behavior)
+
+        self.text_to_speech(f"{team}, make your guess.")
+
         while True:
             guess = recognize_speech_from_mic(self.recognizer, self.microphone)
             transcription = guess.get('transcription')
@@ -131,7 +139,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                         self.team2_score = 1 + self.team2_score
                     break
             else:
-                 self.text_to_speech("I didn't catch that. Please try again.")
+                self.text_to_speech("I didn't catch that. Please try again.")
 
     def gameloop(self):
         # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
