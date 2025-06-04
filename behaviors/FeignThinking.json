@@ -107,7 +107,19 @@
           {
             "Joint": "LeftChest",
             "Angle": 115
-            }
+            },
+            {
+                    "Joint": "HeadTilt",
+                    "Angle": 125
+                },
+                {
+                    "Joint": "HeadNod",
+                    "Angle": 125
+                },
+            {
+                    "Joint": "HeadTurn",
+                    "Angle": 120
+                }
           
         ]
       }
