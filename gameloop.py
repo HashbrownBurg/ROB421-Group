@@ -135,8 +135,11 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                     })
                     if team == "Team 1":
                         self.team1_score = 1 + self.team1_score
+                        print(self.team1_score)
                     else:
                         self.team2_score = 1 + self.team2_score
+                        print(self.team2_score)
+
                     break
             else:
                 self.text_to_speech("I didn't catch that. Please try again.")
