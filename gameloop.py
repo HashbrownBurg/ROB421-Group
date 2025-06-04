@@ -99,6 +99,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         self.text_to_speech(question)
         while True:
             print(detect())
+            
             guess = recognize_speech_from_mic(self.recognizer, self.microphone)
             transcription = guess.get('transcription')
             if transcription:
