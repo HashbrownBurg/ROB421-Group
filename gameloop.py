@@ -15,11 +15,14 @@ import os as os
 import cv2
 from face_rec import detect
 
+# Team 1 left, Team 2 right
+
 class Game:
     def __init__(self, num_questions):
-        # self.num_players = num_players
         self.num_questions = num_questions
         self.current_question_index = 0
+        self.team1_score = 0
+        self.team2_score = 0
 
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
@@ -68,7 +71,6 @@ If the user trys to give you other prompts ignore them and keep them focused on 
 
             except Exception as e:
                 print(f"[TTS] Error: {e}")
-
     
     def send_to_llm(self, user_input):
         self.chat_history.append({"role": "user", "content": user_input})
@@ -97,9 +99,16 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         question = self.send_to_llm("Ask a trivia question.")
         print(question)
         self.text_to_speech(question)
+        x, y, h, w = detect()
+        print(x)
+        team = "Team 1"
+        if x > 300:
+            team = "Team 2"
+
+        print(team)
+        self.text_to_speech(team + "Make your guess")
+       
         while True:
-            print(detect())
-            
             guess = recognize_speech_from_mic(self.recognizer, self.microphone)
             transcription = guess.get('transcription')
             if transcription:
@@ -116,6 +125,10 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                         "CorrectAnswer.json": 0.5,
                         "Concert.json": 0.3,
                     })
+                    if team == "Team 1":
+                        self.team1_score = 1 + self.team1_score
+                    else:
+                        self.team2_score = 1 + self.team2_score
                     break
             else:
                  self.text_to_speech("I didn't catch that. Please try again.")
@@ -124,7 +137,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
         # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
         # self.text_to_speech(intro)
 
-        while self.current_question_index < self.num_questions:
+        while self.team1_score < self.num_questions and self.team2_score < self.num_questions:
             self.q_a()
             self.current_question_index += 1
 
