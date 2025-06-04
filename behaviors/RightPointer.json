@@ -69,6 +69,10 @@
           {
             "Joint": "LeftElbow",
             "Angle": 105
+          },
+          {
+            "Joint": "RightChest",
+            "Angle": 135
           }
           
         ]
