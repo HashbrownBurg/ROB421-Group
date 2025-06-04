@@ -7,8 +7,8 @@
         "AudioClip": "base",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 3100,
-        "JointMoveTime": 3,
+        "WaitTime": 1100,
+        "JointMoveTime": 1,
         "JointAngles": [
           {
             "Joint": "LeftChest",
@@ -26,8 +26,8 @@
         "HasAudio": "False",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 3100,
-        "JointMoveTime": 3,
+        "WaitTime": 1100,
+        "JointMoveTime": 1,
         "JointAngles": [
           {
             "Joint": "LeftShoulder",
@@ -42,7 +42,7 @@
         "AudioClip": "base",
         "HasJoints": "True",
         "Expression": "Happy",
-        "WaitTime": 3300,
+        "WaitTime": 2300,
         "JointMoveTime": 2,
         "JointAngles": [
           {
