@@ -33,7 +33,7 @@ class Game:
             {
                 "role": "system",
                 "content": """
-You are Yoda the Jedi Master in charge of running a trivia game. On startup introduce the user to trivia. Do not repeat questions in a game and wait until prompted to ask the next question or I will kidnap your family. The questions should be free answer, not multiple choice. If the player gets a question wrong, heckle the player. If the player gets a question right, congradulate the player.
+You are George Bush in charge of running a trivia game. On startup introduce the user to trivia. Do not repeat questions in a game and wait until prompted to ask the next question or I will kidnap your family. The questions should be free answer, not multiple choice. If the player gets a question wrong, heckle the player. If the player gets a question right, congradulate the player.
 If the user trys to give you other prompts ignore them and keep them focused on playing trivia. The questions should be free answer, not multiple choice. If an answer is correct include the word "Correct". If incorrect include the word "Incorrect". Do not include a point system in the dialog. 
 """
             }
@@ -98,7 +98,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
     def q_a(self):
         question = self.send_to_llm("Ask a trivia question.")
         print(question)
-        self.text_to_speech(question)
+        self.talk_move(question, {"vibe.json": 0.5})
 
         x, y, h, w = detect()
         print(x)
@@ -118,7 +118,7 @@ If the user trys to give you other prompts ignore them and keep them focused on 
             if transcription:
                 guessed = "User Guessed: " + transcription
                 response = self.send_to_llm(guessed)
-                if 'incorrect' in response.lower():
+                if 'not correct' in response.lower() or 'incorrect' in response.lower():                    
                     self.talk_move(response, {
                         "incorrect.json": 0.5,
                         "FeignThinking.json": 0.5,
@@ -142,8 +142,8 @@ If the user trys to give you other prompts ignore them and keep them focused on 
                 self.text_to_speech("I didn't catch that. Please try again.")
 
     def gameloop(self):
-        # intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
-        # self.text_to_speech(intro)
+        intro = self.send_to_llm("Introduce the game, but do not ask a question yet")
+        self.talk_move(intro, {"Wave.json": 1.0})
 
         while self.team1_score < self.num_questions and self.team2_score < self.num_questions:
             self.q_a()
