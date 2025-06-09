@@ -1,0 +1,173 @@
+{
+    "Name": "ShowSky",
+    "Keyframes": [
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 2500,
+            "JointMoveTime": 0.2,
+            "JointAngles": [
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 170
+                },
+                {
+                    "Joint": "LeftBicep",
+                    "Angle": 200
+                },
+                {
+                    "Joint": "LeftElbow",
+                    "Angle": 160
+                },
+                {
+                    "Joint": "LeftChest",
+                    "Angle": 120
+                },
+                {
+                    "Joint": "RightShoulder",
+                    "Angle": 100
+                },
+                {
+                    "Joint": "RightBicep",
+                    "Angle": 25
+                },
+                {
+                    "Joint": "RightElbow",
+                    "Angle": 20
+                },
+                {
+                    "Joint": "RightChest",
+                    "Angle": 135
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 1000,
+            "JointMoveTime": 0.8,
+            "JointAngles": [
+                {
+                    "Joint": "HeadNod",
+                    "Angle": 100
+                },
+                {
+                    "Joint": "LeftBicep",
+                    "Angle": 55
+                },
+                {
+                    "Joint": "RightBicep",
+                    "Angle": 180
+                },
+                {
+                    "Joint": "RightChest",
+                    "Angle": 0
+                },
+                {
+                    "Joint": "LeftChest",
+                    "Angle": 255
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 300,
+            "JointMoveTime": 0.5,
+            "JointAngles": [
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 150
+                },
+                {
+                    "Joint": "RightShoulder",
+                    "Angle": 120
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 300,
+            "JointMoveTime": 0.5,
+            "JointAngles": [
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 190
+                },
+                {
+                    "Joint": "RightShoulder",
+                    "Angle": 80
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 300,
+            "JointMoveTime": 0.5,
+            "JointAngles": [
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 150
+                },
+                {
+                    "Joint": "RightShoulder",
+                    "Angle": 120
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 300,
+            "JointMoveTime": 0.5,
+            "JointAngles": [
+                {
+                    "Joint": "LeftShoulder",
+                    "Angle": 170
+                },
+                {
+                    "Joint": "RightShoulder",
+                    "Angle": 100
+                }
+            ]
+        },
+        {
+            "HasEmote": "False",
+            "HasAudio": "False",
+            "HasJoints": "True",
+            "WaitTime": 2500,
+            "JointMoveTime": 0.8,
+            "JointAngles": [
+                {
+                    "Joint": "HeadNod",
+                    "Angle": 120
+                },
+                {
+                    "Joint": "LeftBicep",
+                    "Angle": 200
+                },
+                {
+                    "Joint": "LeftChest",
+                    "Angle": 120
+                },
+                {
+                    "Joint": "RightBicep",
+                    "Angle": 25
+                },
+                {
+                    "Joint": "RightChest",
+                    "Angle": 135
+                }
+            ]
+        }
+        
+    ]
+}
